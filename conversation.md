@@ -1,0 +1,1 @@
+Moved the logo to the center with the title underneath, fixed scrolling, and reduced the border thickness for a cleaner look.

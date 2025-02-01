@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SnakeWifAi - Play2Earn Crypto Game</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            position: relative;
+            overflow-x: hidden;
+            overflow-y: auto; /* Ensure scrolling works */
+        }
+
+        /* Background video styling */
+        video.background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        /* Dim overlay to improve text visibility */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: -1;
+        }
+
+        /* Centered Logo and Title */
+        .logo-container {
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .logo-container img {
+            width: 150px; /* Bigger logo */
+            height: 150px;
+            border-radius: 50%;
+            border: 2px solid #00ff00; /* Slimmer border */
+            display: block;
+            margin: 0 auto;
+        }
+
+        .logo-container h1 {
+            margin-top: 15px;
+            color: #00ff00;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
+            font-size: 1.5rem;
+        }
+
+        nav, main, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        nav {
+            background: rgba(0, 0, 0, 0.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        nav ul li a {
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 0.8rem 1.5rem;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #00ff00;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <video autoplay loop muted playsinline class="background-video">
+        <source src="https://res.cloudinary.com/din5i8qbd/video/upload/v1738322531/dr1hzmncvds4mc2toawr.mp4" type="video/mp4">
+    </video>
+    <div class="overlay"></div>
+
+    <div class="logo-container">
+        <img src="https://res.cloudinary.com/din5i8qbd/image/upload/v1738362803/new_logo_1500_epgmcr.png" alt="SnakeWifAi Logo">
+        <h1>SnakeWifAi</h1>
+    </div>
+
+    <nav class="container-fluid">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#leaderboard">Leaderboard</a></li>
+            <li><a href="#subscribe">Subscribe</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <section id="about">
+            <h3>Play2Earn Crypto Game on the TON Blockchain</h3>
+            <p>Dive into the neon retro world of SnakeWifAi, a play-to-earn twist on the classic Snake game. Earn crypto rewards, participate in token airdrops, and get ready for exclusive NFT releases!</p>
+        </section>
+    </main>
+
+    <footer class="container">
+        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
+    </footer>
+</body>
+</html>
