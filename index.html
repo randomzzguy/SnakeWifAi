@@ -11,9 +11,11 @@
             margin: 0;
             font-family: 'Press Start 2P', cursive;
             color: white;
-            position: relative;
+            text-align: center;
+            position: sticky;
             overflow-x: hidden;
             overflow-y: auto; /* Ensure scrolling works */
+             /* Fallback background color */
         }
 
         /* Background video styling */
@@ -34,93 +36,194 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.3); /* Barely visible black */
             z-index: -1;
+        }
+
+        /* Container for main content */
+        .content-container {
+            background: rgba(0, 0, 0, 0.75); /* Barely visible black */
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px auto;
+            position: relative;
+            z-index: 1;
+            border: 2px solid #00ff00; /* Border around sections */
+            max-width: 800px; /* Center the content */
         }
 
         /* Centered Logo and Title */
         .logo-container {
             text-align: center;
             margin-top: 100px;
+            position: relative;
+            z-index: 1;
         }
 
         .logo-container img {
-            width: 150px; /* Bigger logo */
-            height: 150px;
+            width: 250px; /* Bigger logo */
+            height: 250px;
             border-radius: 50%;
-            border: 2px solid #00ff00; /* Slimmer border */
+            border: 1.5px solid #00ff00; /* Slimmer border */
             display: block;
             margin: 0 auto;
         }
 
         .logo-container h1 {
-            margin-top: 15px;
-            color: #00ff00;
-            text-shadow: 0 0 5px #00ff00, 0 0 10px #00ff00;
-            font-size: 1.5rem;
+            margin-top: 25px;
         }
 
-        nav, main, footer {
-            position: relative;
-            z-index: 1;
-        }
-
+        /* Top menu bar */
         nav {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 2;
             display: flex;
             align-items: center;
-            justify-content: center;
-            padding: 1rem;
+            justify-content: space-between;
+        }
+
+        nav .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        nav .logo img {
+            width: 85px;
+            height: 85px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+        }
+
+        nav .logo h1 {
+            margin-left: 10px;
+            font-size: 1.5rem;
+            line-height: 50%; /* Align with other texts */
         }
 
         nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
             display: flex;
-            gap: 1.5rem;
+            justify-content: center;
+            flex-grow: 1;
+        }
+
+        nav ul li {
+            margin: 0 15px;
         }
 
         nav ul li a {
-            color: #00ff00;
-            border: 1px solid #00ff00;
-            padding: 0.8rem 1.5rem;
-            border-radius: 5px;
+            color: white;
             text-decoration: none;
-            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         nav ul li a:hover {
-            background-color: #00ff00;
+            text-decoration: underline;
+            color: #00ff00;
+        }
+
+        nav .join-now {
+            background: #00ff00;
             color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+
+        nav .join-now:hover {
+            background: #00cc00;
+        }
+
+        /* Glow effect around cursor */
+        body::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(0, 255, 0, 0.5);
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: glow 1.5s infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.5), 0 0 15px rgba(0, 255, 0, 0.5);
+            }
+            50% {
+                box-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.5);
+            }
         }
     </style>
 </head>
 <body>
-    <video autoplay loop muted playsinline class="background-video">
-        <source src="https://res.cloudinary.com/din5i8qbd/video/upload/v1738322531/dr1hzmncvds4mc2toawr.mp4" type="video/mp4">
+    <video class="background-video" autoplay muted loop>
+        <source src="assets/bgVideo.mp4" type="video/mp4">
     </video>
     <div class="overlay"></div>
 
-    <div class="logo-container">
-        <img src="https://res.cloudinary.com/din5i8qbd/image/upload/v1738362803/new_logo_1500_epgmcr.png" alt="SnakeWifAi Logo">
-        <h1>SnakeWifAi</h1>
-    </div>
-
-    <nav class="container-fluid">
+    <nav>
+        <div class="logo">
+            <img src="assets/logo.png" alt="SnakeWifAi Logo">
+            <h1>SnakeWifAi</h1>
+        </div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#leaderboard">Leaderboard</a></li>
             <li><a href="#subscribe">Subscribe</a></li>
         </ul>
+        <a href="#subscribe" class="join-now">Join Now</a>
     </nav>
-
-    <main class="container">
+<br>
+<br/>
+<br>
+<br/>
+<br>
+<br/>
+<br>
+    <main class="container content-container">
+        <img src="assets/logo2.png" alt="Old Logo" style="width: 900px; height: auto; margin-bottom: 200px;" opacity="0.7">
         <section id="about">
-            <h3>Play2Earn Crypto Game on the TON Blockchain</h3>
-            <p>Dive into the neon retro world of SnakeWifAi, a play-to-earn twist on the classic Snake game. Earn crypto rewards, participate in token airdrops, and get ready for exclusive NFT releases!</p>
+            <h3>About</h3>
+            <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi, a play-to-earn twist on the classic Snake game. Earn crypto rewards, participate in token airdrops, and get ready for exclusive NFT releases!</p>
+        </section>
+
+        <section id="features">
+            <h3>Features</h3>
+            <p>SnakeWifAi offers a variety of features including:</p>
+            <ul>
+                <li>Play2Earn mechanics</li>
+                <li>Crypto rewards</li>
+                <li>Token airdrops</li>
+                <li>Exclusive NFT releases</li>
+                <li>Neon retro graphics</li>
+            </ul>
+        </section>
+
+        <section id="leaderboard">
+            <h3>Leaderboard</h3>
+            <p>Compete with players around the world and climb the leaderboard to earn exclusive rewards and recognition. The top players will receive special prizes and tokens.</p>
+        </section>
+
+        <section id="subscribe">
+            <h3>Subscribe</h3>
+            <p>Stay updated with the latest news and updates from SnakeWifAi. Subscribe to our newsletter to receive exclusive offers and early access to new features.</p>
+            <form>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <button type="submit">Subscribe</button>
+            </form>
         </section>
     </main>
 
-    <footer class="container">
+    <footer class="container content-container">
         <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
     </footer>
 </body>
