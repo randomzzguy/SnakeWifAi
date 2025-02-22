@@ -4,20 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SnakeWifAi - Play2Earn Crypto Game</title>
+    <meta name="description" content="SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!">
+    <meta property="og:title" content="SnakeWifAi - Play2Earn Crypto Game">
+    <meta property="og:description" content="SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!">
+    <meta property="og:image" content="assets/logo.png">
+    <meta property="og:url" content="https://yourwebsite.com">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> <!-- Add this line for favicon -->
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <style>
         body {
             margin: 0;
             font-family: 'Press Start 2P', cursive;
             color: white;
-            text-align: center;
-            position: sticky;
+            background-color: rgba(255, 255, 255, 0.01); /* 10% transparency */
             overflow-x: hidden;
-            overflow-y: auto; /* Ensure scrolling works */
-            background-color: #000; /* Fallback background color */
-            cursor: none; /* Hide default cursor */
+            overflow-y: auto;
+            cursor: none;
+            scroll-behavior: smooth;
         }
 
         /* Custom Neon Green Cursor */
@@ -25,99 +30,50 @@
             position: fixed;
             width: 20px;
             height: 20px;
-            background: rgba(0, 255, 0, 1); /* Bright Neon Green */
-            border-radius: 50%;
-            pointer-events: none; /* Prevents interfering with buttons */
-            transform: translate(-50%, -50%);
-            transition: transform 0.05s ease-out;
-            box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
-            z-index: 9999; /* Keep it on top */
-        }
-
-        /* Cursor Trail Effect */
-        .cursor-trail {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: rgba(0, 255, 0, 0.5);
+            background: rgba(0, 255, 0, 1);
             border-radius: 50%;
             pointer-events: none;
             transform: translate(-50%, -50%);
-            animation: fadeOut 0.5s forwards;
-            z-index: 9998;
+            transition: transform 0.05s ease-out, background 0.2s;
+            box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+            z-index: 9999;
         }
 
-        /* Trail fade-out animation */
-        @keyframes fadeOut {
-            from {
-                opacity: 1;
-                transform: scale(1);
-            }
-            to {
-                opacity: 0;
-                transform: scale(2);
-            }
+        button:hover .custom-cursor {
+            background: rgba(255, 0, 0, 1); /* Change cursor color on hover */
         }
 
-        /* Background video styling */
-        video.background-video {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            object-fit: cover;
-            z-index: -2;
-        }
-
-        /* Dim overlay to improve text visibility */
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background: rgba(0, 0, 0, 0.3); /* Barely visible black */
-            z-index: -1;
-        }
-
-        /* Container for main content */
-        .content-container {
-            background: rgba(0, 0, 0, 0.75); /* Barely visible black */
-            padding: 20px;
+        /* Section styling */
+        section {
+            padding: 50px 20px;
+            margin: 40px auto;
+            max-width: 800px;
+            border: 2px solid #00ff00;
+            background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
-            margin: 20px auto;
-            position: relative;
-            z-index: 1;
-            border: 2px solid #00ff00; /* Border around sections */
-            max-width: 800px; /* Center the content */
         }
 
-        /* Centered Logo and Title */
-        .logo-container {
-            font-family: 'Press Start 2P', cursive;
-            text-align: center;
-            margin-top: 100px;
-            position: relative;
-            z-index: 1;
+        h3 {
+            color: #00ff00;
+            margin-bottom: 20px;
         }
 
-        .logo-container img {
-            width: 250px; /* Bigger logo */
-            height: 250px;
-            border-radius: 50%;
-            border: 1.5px solid #00ff00; /* Slimmer border */
-            display: block;
-            margin: 0 auto;
+        p, ul {
+            text-align: left;
+            line-height: 1.6;
         }
 
-        .logo-container h1 {
-            margin-top: 25px;
+        ul {
+            padding-left: 20px;
         }
 
-        /* Top menu bar */
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        /* Navigation styling */
         nav {
-            background: rgba(0, 0, 0, 0.75); /* Semi-transparent black */
+            background: rgba(0, 0, 0, 0.85);
             padding: 10px 20px;
             position: fixed;
             top: 0;
@@ -128,110 +84,127 @@
             justify-content: space-between;
         }
 
-        nav .logo {
-            display: flex;
-            align-items: center;
-        }
-
         nav .logo img {
             width: 85px;
             height: 85px;
             border-radius: 50%;
         }
 
-        nav .logo h1 {
-            margin-left: 10px;
-            font-size: 1.5rem;
-            line-height: 50%; /* Align with other texts */
-        }
-
         nav ul {
+            display: flex;
             list-style: none;
             padding: 0;
             margin: 0;
-            display: flex;
-            justify-content: center;
-            flex-grow: 1;
         }
 
         nav ul li {
             margin: 0 15px;
         }
 
-        nav ul li a {
+        nav a {
             color: white;
             text-decoration: none;
         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
+        nav a:hover {
             color: #00ff00;
         }
 
-        nav .join-now {
-            background: rgba(0, 255, 0, 0.1); /* Light neon green background */
-            border: 2px solid #00ff00; /* Neon green border */
+        .join-now {
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
         }
 
-        nav .join-now:hover {
+        .join-now:hover {
             background: #00cc00;
         }
 
-        /* Glow effect around cursor */
-        body::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background: rgba(0, 255, 0, 0.5);
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            animation: glow 1.5s infinite;
-        }
-
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 5px rgba(0, 255, 0, 0.5), 0 0 10px rgba(0, 255, 0, 0.5), 0 0 15px rgba(0, 255, 0, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.5);
-            }
-        }
-
-        /* Style for h3 elements */
-        h3 {
-            font-family: 'Press Start 2P', cursive;
+        /* Button hover effect */
+        button {
+            transition: all 0.2s;
+            border: 2px solid #00ff00;
             color: white;
-            background: rgba(0, 255, 0, 0.1); /* Light neon green background */
-            border: 2px solid #00ff00; /* Neon green border */
-            padding: 15px;
-            border-radius: 5px;
-            display: block;
-            width: calc(100%); /* Full width minus padding and border */
-            margin: 0 auto px; /* Center and add bottom margin */
+        }
+
+        button:hover {
+            background-color: #00ff00;
+            color: black;
+        }
+
+        /* Video background */
+        video.background-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5); /* Adjusted for better visibility */
+            z-index: -1;
         }
 
         /* Notification styles */
         .notification {
             font-family: 'Press Start 2P', cursive;
             color: white;
-            background: rgba(0, 255, 0, 0.1); /* Light neon green background */
-            border: 2px solid #00ff00; /* Neon green border */
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
             padding: 15px;
             border-radius: 5px;
             display: none;
             margin: 20px auto;
-            width: calc(100% - 44px); /* Full width minus padding and border */
+            width: calc(100% - 44px);
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .notification.show {
+            display: block;
+            opacity: 1;
         }
 
         /* Center text input */
         input[type="email"] {
             text-align: center;
+        }
+
+        /* Footer styling */
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.85);
+            border-top: 2px solid #00ff00;
+        }
+
+        footer a {
+            color: #00ff00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Center the GIF */
+        .centered-gif {
+            display: flex;
+            color: transparent;
+            justify-content: center;
+            align-items: center;
+            margin: 80px 0;
         }
     </style>
 </head>
@@ -244,7 +217,6 @@
     <nav>
         <div class="logo">
             <img src="assets/logo.png" alt="SnakeWifAi Logo">
-            <li><a href="#about">SnakeWifAi</a></li>
         </div>
         <ul>
             <li><a href="#about">About</a></li>
@@ -255,16 +227,18 @@
         <a href="#subscribe" class="join-now">Join Now</a>
     </nav>
 
-    <main class="container content-container">
-        <img src="assets/logo.gif" alt="gif Logo" style="width: 900px; height: auto; margin-bottom: 200px;" opacity="0.7">
+    <main class="container">
+        <div class="centered-gif">
+            <img src="assets/logo.gif" alt="gif Logo" style="width: 100%; max-width: 900px; height: auto;">
+        </div>
+        
         <section id="about">
             <h3>About</h3>
-            <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi, a play-to-earn twist on the classic Snake game. Earn crypto rewards, participate in token airdrops, and get ready for exclusive NFT releases!</p>
+            <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!</p>
         </section>
 
         <section id="features">
             <h3>Features</h3>
-            <p>SnakeWifAi offers a variety of features including:</p>
             <ul>
                 <li>Play2Earn mechanics</li>
                 <li>Crypto rewards</li>
@@ -276,26 +250,36 @@
 
         <section id="leaderboard">
             <h3>Leaderboard</h3>
-            <p>Compete with players around the world and climb the leaderboard to earn exclusive rewards and recognition. The top players will receive special prizes and tokens.</p>
+            <p>Compete with players around the world and climb the leaderboard to earn exclusive rewards and recognition.</p>
         </section>
 
         <section id="subscribe">
             <h3>Subscribe</h3>
             <p>Stay updated with the latest news and updates from SnakeWifAi. Subscribe to our newsletter to receive exclusive offers and early access to new features.</p>
             <form id="subscribe-form">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <input type="email" id="email" name="email" placeholder="Your email" required>
                 <button type="submit">Subscribe</button>
             </form>
             <div id="notification" class="notification"></div>
         </section>
     </main>
 
-    <footer class="container content-container">
-        <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
+    <footer class="container">
+        <small><a href="privacy-policy.html">Privacy Policy</a> • <a href="terms-of-service.html">Terms of Service</a></small>
     </footer>
 
     <script>
+        // Custom Cursor Effect
+        const cursor = document.createElement('div');
+        cursor.classList.add('custom-cursor');
+        document.body.appendChild(cursor);
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+        });
+
+        // Form submission and validation
         document.getElementById('subscribe-form').addEventListener('submit', function(event) {
             event.preventDefault();
             const emailInput = document.getElementById('email');
@@ -305,27 +289,43 @@
             // Simple email validation
             const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailPattern.test(email)) {
-                notification.textContent = 'Invalid email format. Please enter a valid email address.';
-                notification.style.display = 'block';
-                notification.style.color = 'red';
+                showNotification('Invalid email format. Please enter a valid email address.', 'red');
                 return;
             }
 
-            // Send email to Google Sheets
-            const scriptURL = 'https://script.google.com/macros/s/AKfycbyWIU7p8DRn87tuAfP7Pv_3K6E45PwTL5MNnuVT3SJ1wsdpqBiwlou4Mln90mEinx3rjA/exec';
-            fetch(scriptURL, { method: 'POST', body: new FormData(document.getElementById('subscribe-form')) })
-                .then(response => {
-                    notification.textContent = 'Email submitted successfully!';
-                    notification.style.display = 'block';
-                    notification.style.color = 'green';
-                    emailInput.value = ''; // Clear the input field
+            // Check if email already exists in Google Sheets
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbwNSH6HCSb-bO87q1H98-fMdoYvNZBSakQQbMnqMoYCtN1ouMJqPrCPRhcU3ZCPZxmb2Q/exec';
+            fetch(scriptURL + '?email=' + encodeURIComponent(email))
+                .then(response => response.json())
+                .then(data => {
+                    if (data.exists) {
+                        showNotification('Email already exists. Please use a different email address.', 'red');
+                    } else {
+                        // Send email to Google Sheets
+                        fetch(scriptURL, { method: 'POST', body: new FormData(document.getElementById('subscribe-form')) })
+                            .then(response => {
+                                showNotification('Successfully submitted email. Thank you for subscribing!', 'green');
+                                emailInput.value = ''; // Clear the input field
+                            })
+                            .catch(error => {
+                                showNotification('Error submitting email. Please try again later.', 'red');
+                            });
+                    }
                 })
                 .catch(error => {
-                    notification.textContent = 'Error submitting email. Please try again later.';
-                    notification.style.display = 'block';
-                    notification.style.color = 'red';
+                    showNotification('Error checking email. Please try again later.', 'red');
                 });
         });
+
+        function showNotification(message, color) {
+            const notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.color = color;
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000); // Hide after 5 seconds
+        }
     </script>
 </body>
 </html>
