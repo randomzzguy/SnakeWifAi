@@ -6,16 +6,56 @@
     <title>SnakeWifAi - Play2Earn Crypto Game</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon"> <!-- Add this line for favicon -->
     <style>
         body {
             margin: 0;
             font-family: 'Press Start 2P', cursive;
             color: white;
-            text-align: center;
+            text-align: justify;
             position: sticky;
             overflow-x: hidden;
             overflow-y: auto; /* Ensure scrolling works */
-             /* Fallback background color */
+            background-color: #000; /* Fallback background color */
+        }
+
+        /* Custom Neon Green Cursor */
+        .custom-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: rgba(0, 255, 0, 1); /* Bright Neon Green */
+            border-radius: 50%;
+            pointer-events: none; /* Prevents interfering with buttons */
+            transform: translate(-50%, -50%);
+            transition: transform 0.05s ease-out;
+            box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
+            z-index: 9999; /* Keep it on top */
+        }
+
+        /* Cursor Trail Effect */
+        .cursor-trail {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: rgba(0, 255, 0, 0.5);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: fadeOut 0.5s forwards;
+            z-index: 9998;
+        }
+
+        /* Trail fade-out animation */
+        @keyframes fadeOut {
+            from {
+                opacity: 1;
+                transform: scale(1);
+            }
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
         }
 
         /* Background video styling */
@@ -54,6 +94,7 @@
 
         /* Centered Logo and Title */
         .logo-container {
+            font-family: 'Press Start 2P', cursive;
             text-align: center;
             margin-top: 100px;
             position: relative;
@@ -95,7 +136,6 @@
             width: 85px;
             height: 85px;
             border-radius: 50%;
-            border: 2px solid #00ff00;
         }
 
         nav .logo h1 {
@@ -128,8 +168,9 @@
         }
 
         nav .join-now {
-            background: #00ff00;
-            color: #000;
+            background: rgba(0, 255, 0, 0.1); /* Light neon green background */
+            border: 2px solid #00ff00; /* Neon green border */
+            color: white;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
@@ -160,6 +201,37 @@
                 box-shadow: 0 0 10px rgba(0, 255, 0, 0.5), 0 0 20px rgba(0, 255, 0, 0.5), 0 0 30px rgba(0, 255, 0, 0.5);
             }
         }
+
+        /* Style for h3 elements */
+        h3 {
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            background: rgba(0, 255, 0, 0.1); /* Light neon green background */
+            border: 2px solid #00ff00; /* Neon green border */
+            padding: 15px;
+            border-radius: 5px;
+            display: block;
+            width: calc(100%); /* Full width minus padding and border */
+            margin: 0 auto px; /* Center and add bottom margin */
+        }
+
+        /* Notification styles */
+        .notification {
+            font-family: 'Press Start 2P', cursive;
+            color: white;
+            background: rgba(0, 255, 0, 0.1); /* Light neon green background */
+            border: 2px solid #00ff00; /* Neon green border */
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            margin: 20px auto;
+            width: calc(100% - 44px); /* Full width minus padding and border */
+        }
+
+        /* Center text input */
+        input[type="email"] {
+            text-align: center;
+        }
     </style>
 </head>
 <body>
@@ -171,7 +243,7 @@
     <nav>
         <div class="logo">
             <img src="assets/logo.png" alt="SnakeWifAi Logo">
-            <h1>SnakeWifAi</h1>
+            <li><a href="#about">SnakeWifAi</a></li>
         </div>
         <ul>
             <li><a href="#about">About</a></li>
@@ -181,15 +253,9 @@
         </ul>
         <a href="#subscribe" class="join-now">Join Now</a>
     </nav>
-<br>
-<br/>
-<br>
-<br/>
-<br>
-<br/>
-<br>
+
     <main class="container content-container">
-        <img src="assets/logo2.png" alt="Old Logo" style="width: 900px; height: auto; margin-bottom: 200px;" opacity="0.7">
+        <img src="assets/logo.gif" alt="gif Logo" style="width: 900px; height: auto; margin-bottom: 200px;" opacity="0.7">
         <section id="about">
             <h3>About</h3>
             <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi, a play-to-earn twist on the classic Snake game. Earn crypto rewards, participate in token airdrops, and get ready for exclusive NFT releases!</p>
@@ -215,16 +281,50 @@
         <section id="subscribe">
             <h3>Subscribe</h3>
             <p>Stay updated with the latest news and updates from SnakeWifAi. Subscribe to our newsletter to receive exclusive offers and early access to new features.</p>
-            <form>
+            <form id="subscribe-form">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
                 <button type="submit">Subscribe</button>
             </form>
+            <div id="notification" class="notification"></div>
         </section>
     </main>
 
     <footer class="container content-container">
         <small><a href="#">Privacy Policy</a> • <a href="#">Terms of Service</a></small>
     </footer>
+
+    <script>
+        document.getElementById('subscribe-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const emailInput = document.getElementById('email');
+            const notification = document.getElementById('notification');
+            const email = emailInput.value;
+
+            // Simple email validation
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(email)) {
+                notification.textContent = 'Invalid email format. Please enter a valid email address.';
+                notification.style.display = 'block';
+                notification.style.color = 'red';
+                return;
+            }
+
+            // Send email to Google Sheets
+            const scriptURL = 'https://script.google.com/macros/s/AKfycbyWIU7p8DRn87tuAfP7Pv_3K6E45PwTL5MNnuVT3SJ1wsdpqBiwlou4Mln90mEinx3rjA/exec';
+            fetch(scriptURL, { method: 'POST', body: new FormData(document.getElementById('subscribe-form')) })
+                .then(response => {
+                    notification.textContent = 'Email submitted successfully!';
+                    notification.style.display = 'block';
+                    notification.style.color = 'green';
+                    emailInput.value = ''; // Clear the input field
+                })
+                .catch(error => {
+                    notification.textContent = 'Error submitting email. Please try again later.';
+                    notification.style.display = 'block';
+                    notification.style.color = 'red';
+                });
+        });
+    </script>
 </body>
 </html>
