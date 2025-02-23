@@ -39,11 +39,17 @@
             z-index: 9999;
         }
 
-        /* Change cursor color on hover */
+        /* Change cursor color on hover and hide original cursor */
         button:hover ~ .custom-cursor,
         nav a:hover ~ .custom-cursor,
         a:hover ~ .custom-cursor {
-            background: rgb(42, 169, 253); /* Change cursor color to blue on hover */
+            background: rgba(0, 0, 255, 1); /* Change cursor color to blue on hover */
+        }
+
+        button:hover,
+        nav a:hover,
+        a:hover {
+            cursor: none; /* Hide original cursor */
         }
 
         /* Section styling */
