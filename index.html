@@ -18,7 +18,7 @@
             margin: 0;
             font-family: 'Press Start 2P', cursive;
             color: white;
-            background-color: rgba(255, 255, 255, 0.01); /* 10% transparency */
+            background-color: rgba(0, 0, 0, 0.01); /* 10% transparency */
             overflow-x: hidden;
             overflow-y: auto;
             cursor: none;
@@ -39,8 +39,11 @@
             z-index: 9999;
         }
 
-        button:hover .custom-cursor {
-            background: rgba(255, 0, 0, 1); /* Change cursor color on hover */
+        /* Change cursor color on hover */
+        button:hover ~ .custom-cursor,
+        nav a:hover ~ .custom-cursor,
+        a:hover ~ .custom-cursor {
+            background: rgb(42, 169, 253); /* Change cursor color to blue on hover */
         }
 
         /* Section styling */
@@ -144,6 +147,7 @@
             height: 100vh;
             object-fit: cover;
             z-index: -2;
+            filter: brightness(1.5); /* Make the video brighter */
         }
 
         .overlay {
@@ -152,7 +156,7 @@
             left: 0;
             width: 100vw;
             height: 100vh;
-            background: rgba(0, 0, 0, 0.5); /* Adjusted for better visibility */
+            background: rgba(0, 0, 0, 0.3); /* Adjusted for better visibility */
             z-index: -1;
         }
 
@@ -201,7 +205,6 @@
         /* Center the GIF */
         .centered-gif {
             display: flex;
-            color: transparent;
             justify-content: center;
             align-items: center;
             margin: 80px 0;
@@ -277,6 +280,15 @@
         document.addEventListener('mousemove', (e) => {
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
+        });
+
+        document.querySelectorAll('button, nav a, a').forEach(element => {
+            element.addEventListener('mouseover', () => {
+                cursor.style.background = 'rgba(0, 0, 255, 1)';
+            });
+            element.addEventListener('mouseout', () => {
+                cursor.style.background = 'rgba(0, 255, 0, 1)';
+            });
         });
 
         // Form submission and validation
