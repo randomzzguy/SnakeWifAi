@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>SnakeWifAi - Play2Earn Crypto Game</title>
-    <meta name="description" content="SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!">
-    <meta property="og:title" content="SnakeWifAi - Play2Earn Crypto Game">
+    <title>SnakeWifAi - Train Your AI Snake</title>
+    <meta name="description" content="SnakeWifAi is a project that aims to teach AI to master the classic Snake game. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!">
+    <meta property="og:title" content="SnakeWifAi - Train Your Own AI Snake!">
     <meta property="og:description" content="SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!">
     <meta property="og:image" content="assets/logo.png">
-    <meta property="og:url" content="https://yourwebsite.com">
+    <meta property="og:url" content="https://snakewifai.xyz">
     <meta name="twitter:card" content="summary_large_image">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Doto:wght@100..900&family=Major+Mono+Display&display=swap" rel="stylesheet">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <style>
         body {
             margin: 0;
-            font-family: 'Press Start 2P', cursive;
+            font-family: "Major Mono Display", serif;
             color: white;
             background-color: rgba(0, 0, 0, 0.01); /* 10% transparency */
             overflow-x: hidden;
@@ -43,7 +45,7 @@
         button:hover ~ .custom-cursor,
         nav a:hover ~ .custom-cursor,
         a:hover ~ .custom-cursor {
-            background: rgba(0, 0, 255, 1); /* Change cursor color to blue on hover */
+            background: rgb(52, 197, 255); /* Change cursor color to blue on hover */
         }
 
         button:hover,
@@ -55,17 +57,23 @@
         /* Section styling */
         section {
             padding: 50px 20px;
-            margin: 40px auto;
+            margin: 60px auto;
             max-width: 800px;
-            border: 2px solid #00ff00;
+            border: 4px solid #00ff00; /* Neon green border */
             background: rgba(0, 0, 0, 0.8);
             border-radius: 10px;
+            box-shadow: 0 0 15px #00ff00, 0 0 30px #ff00ff; /* Soft neon glow */
         }
 
+
         h3 {
-            color: #00ff00;
+            color: white;
+            font-family: "Doto", serif;
+            font-size: 2rem;
             margin-bottom: 20px;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #ff00ff;
         }
+
 
         p, ul {
             text-align: left;
@@ -81,9 +89,10 @@
         }
 
         /* Navigation styling */
+        /* Neon Glowing Navbar */
         nav {
             background: rgba(0, 0, 0, 0.85);
-            padding: 10px 20px;
+            padding: 5px 10px;
             position: fixed;
             top: 0;
             width: 100%;
@@ -91,58 +100,67 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            border: 4px solid #00ff00;
+            box-shadow: 0 0 15px #00ff00, 0 0 30px #ff00ff;
+            border-radius: 8px;
+            animation: glitch 1s infinite;
         }
 
         nav .logo img {
             width: 85px;
             height: 85px;
-            border-radius: 50%;
         }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        nav ul li {
-            margin: 0 15px;
-        }
-
         nav a {
             color: white;
             text-decoration: none;
+            font-size: 1.1rem;
+            animation: neon-flicker 1.5s infinite alternate;
+            margin: 0 15px;
         }
 
         nav a:hover {
             color: #00ff00;
+            text-shadow: 0 0 5px #00ff00, 0 0 20px #ff00ff;
         }
 
-        .join-now {
+        /* Glitch Animation */
+        @keyframes glitch {
+            0%, 20%, 40%, 60%, 80%, 100% { transform: translate(0); opacity: 1; }
+            10% { transform: translate(-3px, 3px); opacity: 0.8; }
+            30% { transform: translate(3px, -3px); opacity: 1; }
+            50% { transform: translate(-3px, -3px); opacity: 0.8; }
+            70% { transform: translate(3px, 3px); opacity: 1; }
+        }
+
+        /* Neon Flicker Effect */
+        @keyframes neon-flicker {
+            0%, 18%, 22%, 25%, 53%, 57%, 100% {
+                text-shadow: 
+                    0 0 4px #00ffff, 
+                    0 0 19px #00ffff, 
+                    0 0 40px #ff00ff;
+            }
+            20%, 24%, 55% {
+                text-shadow: none;
+            }
+        }
+        button, .join-now {
             background: rgba(0, 255, 0, 0.1);
             border: 2px solid #00ff00;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
-            text-decoration: none;
+            font-family: 'Major Mono Display', cursive;
+            transition: all 0.3s ease;
         }
 
-        .join-now:hover {
-            background: #00cc00;
-        }
-
-        /* Button hover effect */
-        button {
-            transition: all 0.2s;
-            border: 2px solid #00ff00;
-            color: white;
-        }
-
-        button:hover {
-            background-color: #00ff00;
+        button:hover, .join-now:hover {
+            background: #00ff00;
             color: black;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #ff00ff;
+            cursor: none; /* Keep the custom cursor experience */
         }
+
 
         /* Video background */
         video.background-video {
@@ -168,7 +186,7 @@
 
         /* Notification styles */
         .notification {
-            font-family: 'Press Start 2P', cursive;
+            font-family: 'Major Mono Display', serif;
             color: white;
             background: rgba(0, 255, 0, 0.1);
             border: 2px solid #00ff00;
@@ -188,12 +206,27 @@
 
         /* Center text input */
         input[type="email"] {
+            background: rgba(0, 0, 0, 0.7);
+            border: 2px solid #00ff00;
+            color: white;
+            padding: 10px;
+            width: 100%;
+            max-width: 400px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px #00ff00;
+            text-align: center;
+            font-family: 'Major Mono Display', serif;
+        }
+
+        input[type="email"]::placeholder {
+            color: rgba(255, 255, 255, 0.7);
             text-align: center;
         }
 
         /* Footer styling */
         footer {
             text-align: center;
+            width: 100%;
             padding: 20px;
             background: rgba(0, 0, 0, 0.85);
             border-top: 2px solid #00ff00;
@@ -225,7 +258,7 @@
 
     <nav>
         <div class="logo">
-            <img src="assets/logo.png" alt="SnakeWifAi Logo">
+            <img src="assets/newestogo.png" alt="SnakeWifAi Logo">
         </div>
         <ul>
             <li><a href="#about">About</a></li>
@@ -240,34 +273,28 @@
         <div class="centered-gif">
             <img src="assets/logo.gif" alt="gif Logo" style="width: 100%; max-width: 900px; height: auto;">
         </div>
-        
+        <h3>SnakeWifAi Teach AI to Master the Classic Snake Game!</h3>
         <section id="about">
             <h3>About</h3>
             <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!</p>
         </section>
 
         <section id="features">
-            <h3>Features</h3>
-            <ul>
-                <li>Play2Earn mechanics</li>
-                <li>Crypto rewards</li>
-                <li>Token airdrops</li>
-                <li>Exclusive NFT releases</li>
-                <li>Neon retro graphics</li>
-            </ul>
+            <h3>How It Works</h3>
+           <p>We make learning about AI as fun as playing a game. You’ll guide an AI through the process of mastering Snake, tweaking its “brain” and strategy as it learns to navigate the grid, gobble up food, and avoid crashing into walls (or itself!). The better you train your AI, the higher your score—and your bragging rights—will soar.           </p>>
         </section>
 
         <section id="leaderboard">
-            <h3>Leaderboard</h3>
-            <p>Compete with players around the world and climb the leaderboard to earn exclusive rewards and recognition.</p>
+            <h3>Compete & Win</h3>
+            <p>Once your AI is up and running, put it to the test! Compete against other trainers to see whose AI snake reigns supreme. Our dynamic leaderboard showcases the best of the best, offering a platform for friendly competition and inspiration. Whether you’re a tech enthusiast, a gaming pro, or just curious about AI, there’s a spot on the leaderboard with your name on it.</p>
         </section>
 
         <section id="subscribe">
-            <h3>Subscribe</h3>
+            <h3>Join the AI Revolution</h3>
             <p>Stay updated with the latest news and updates from SnakeWifAi. Subscribe to our newsletter to receive exclusive offers and early access to new features.</p>
             <form id="subscribe-form">
                 <input type="email" id="email" name="email" placeholder="Your email" required>
-                <button type="submit">Subscribe</button>
+                <button type="submit">SssubssScribE</button>
             </form>
             <div id="notification" class="notification"></div>
         </section>
