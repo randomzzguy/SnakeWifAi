@@ -53,7 +53,40 @@
         a:hover {
             cursor: none; /* Hide original cursor */
         }
+        /* Mobile menu styles */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
 
+        .menu-toggle span {
+            background: white;
+            height: 3px;
+            margin: 4px;
+            width: 25px;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: center;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .join-now {
+                display: none;
+            }
+        }
         /* Section styling */
         section {
             padding: 50px 20px;
@@ -267,6 +300,11 @@
             <li><a href="#subscribe">Subscribe</a></li>
         </ul>
         <a href="#subscribe" class="join-now">Join Now</a>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </nav>
 
     <main class="container">
@@ -323,7 +361,13 @@
                 cursor.style.background = 'rgba(0, 255, 0, 1)';
             });
         });
+        // Toggle mobile menu
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
 
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
         // Form submission and validation
         document.getElementById('subscribe-form').addEventListener('submit', function(event) {
             event.preventDefault();
