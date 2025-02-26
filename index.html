@@ -41,11 +41,12 @@
             z-index: 9999;
         }
 
-        /* Change cursor color on hover and hide original cursor */
+        /* Change cursor color and glow on hover */
         button:hover ~ .custom-cursor,
         nav a:hover ~ .custom-cursor,
         a:hover ~ .custom-cursor {
-            background: rgb(52, 197, 255); /* Change cursor color to blue on hover */
+            background: rgba(52, 197, 255, 1); /* Change cursor color to light blue on hover */
+            box-shadow: 0 0 10px rgba(52, 197, 255, 1), 0 0 20px rgba(52, 197, 255, 1), 0 0 40px rgba(52, 197, 255, 1);
         }
 
         button:hover,
@@ -249,6 +250,8 @@
             box-shadow: 0 0 10px #00ff00;
             text-align: center;
             font-family: 'Major Mono Display', serif;
+            display: block;
+            margin: 0 auto 20px auto; /* Center the input field and add margin-bottom */
         }
 
         input[type="email"]::placeholder {
@@ -256,11 +259,50 @@
             text-align: center;
         }
 
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            background-color: rgba(0, 0, 0, 0.8);
+            margin: 15% auto;
+            padding: 20px;
+            border: 2px solid #00ff00;
+            width: 80%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00ff00, 0 0 30px #ff00ff;
+            color: white;
+            font-family: 'Major Mono Display', serif;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
         /* Footer styling */
         footer {
             text-align: center;
             width: 100%;
-            padding: 20px;
+            padding: 2px;
             background: rgba(0, 0, 0, 0.85);
             border-top: 2px solid #00ff00;
         }
@@ -293,6 +335,11 @@
         <div class="logo">
             <img src="assets/newestLogo.png" alt="SnakeWifAi Logo">
         </div>
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <ul>
             <li><a href="#about">About</a></li>
             <li><a href="#features">Features</a></li>
@@ -300,11 +347,7 @@
             <li><a href="#subscribe">Subscribe</a></li>
         </ul>
         <a href="#subscribe" class="join-now">Join Now</a>
-        <div class="menu-toggle" id="menu-toggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </div>
+
     </nav>
 
     <main class="container">
@@ -341,7 +384,61 @@
     <footer class="container">
         <small><a href="privacy-policy.html">Privacy Policy</a> • <a href="terms-of-service.html">Terms of Service</a></small>
     </footer>
+        <!-- The Privacy Policy Modal -->
+    <div id="privacyModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Privacy Policy</h3>
+            <p>Last Updated: 26/02/2025</p>
+            <h4>1. Introduction</h4>
+            <p>Welcome to Snake WiFai ("we," "our," "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website https://www.snakewifai.xyz/ ("Site").</p>
+            <h4>2. Information We Collect</h4>
+            <p><strong>Personal Information:</strong> When you visit our site, you may voluntarily provide us with personal information, such as your name, email address, and any other information you choose to share.</p>
+            <p><strong>Usage Data:</strong> We may collect information automatically, such as your IP address, browser type, operating system, and browsing behavior on our site.</p>
+            <h4>3. How We Use Your Information</h4>
+            <p>We may use the information we collect to:</p>
+            <ul>
+                <li>Improve and personalize your experience on our site</li>
+                <li>Respond to your inquiries and provide customer support</li>
+                <li>Monitor and analyze site usage and trends</li>
+            </ul>
+            <h4>4. Sharing Your Information</h4>
+            <p>We do not sell, trade, or otherwise transfer your personal information to outside parties unless required by law.</p>
+            <h4>5. Cookies and Tracking Technologies</h4>
+            <p>We may use cookies and similar tracking technologies to enhance your experience on our site.</p>
+            <h4>6. Your Rights</h4>
+            <p>You may opt-out of certain data collection practices or request access to or deletion of your personal information by contacting us at [Your Contact Email].</p>
+            <h4>7. Changes to This Policy</h4>
+            <p>We may update this Privacy Policy from time to time. We encourage you to review this page periodically for any changes.</p>
+            <h4>8. Contact Us</h4>
+            <p>If you have any questions about this Privacy Policy, please contact us at snakewifai@proton.me</p>
+        </div>
+    </div>
 
+    <!-- The Terms of Service Modal -->
+    <div id="termsModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3>Terms of Service</h3>
+            <p>Last Updated: 27/02/2025</p>
+            <h4>1. Acceptance of Terms</h4>
+            <p>By accessing and using https://www.snakewifai.xyz/ ("Site"), you agree to comply with these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our site.</p>
+            <h4>2. Use of Our Site</h4>
+            <p>You may use our site for lawful purposes only. You agree not to use the site in a way that could harm, disrupt, or impair the site or our services.</p>
+            <h4>3. Intellectual Property</h4>
+            <p>All content on our site, including text, graphics, logos, and images, is the property of Snake WiFai or its licensors and is protected by intellectual property laws.</p>
+            <h4>4. User Content</h4>
+            <p>If you submit content to our site, you grant us a non-exclusive, royalty-free, worldwide license to use, reproduce, and display that content.</p>
+            <h4>5. Disclaimer of Warranties</h4>
+            <p>Our site is provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the site will be error-free or uninterrupted.</p>
+            <h4>6. Limitation of Liability</h4>
+            <p>To the fullest extent permitted by law, Snake WiFai shall not be liable for any damages arising from your use of our site.</p>
+            <h4>7. Changes to These Terms</h4>
+            <p>We may update these Terms from time to time. Continued use of the site constitutes acceptance of the updated Terms.</p>
+            <h4>8. Contact Us</h4>
+            <p>If you have questions about these Terms, please contact us at snakewifai@proton.me</p>
+        </div>
+    </div>
     <script>
         // Custom Cursor Effect
         const cursor = document.createElement('div');
@@ -355,12 +452,15 @@
 
         document.querySelectorAll('button, nav a, a').forEach(element => {
             element.addEventListener('mouseover', () => {
-                cursor.style.background = 'rgba(0, 0, 255, 1)';
+                cursor.style.background = 'rgba(52, 197, 255, 1)'; // Light blue color
+                cursor.style.boxShadow = '0 0 10px rgba(52, 197, 255, 1), 0 0 20px rgba(52, 197, 255, 1), 0 0 40px rgba(52, 197, 255, 1)';
             });
             element.addEventListener('mouseout', () => {
-                cursor.style.background = 'rgba(0, 255, 0, 1)';
+                cursor.style.background = 'rgba(0, 255, 0, 1)'; // Neon green color
+                cursor.style.boxShadow = '0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0';
             });
         });
+
         // Toggle mobile menu
         const menuToggle = document.getElementById('menu-toggle');
         const navMenu = document.getElementById('nav-menu');
@@ -415,6 +515,59 @@
                 notification.classList.remove('show');
             }, 5000); // Hide after 5 seconds
         }
+        // Get the modal
+        const privacyModal = document.getElementById("privacyModal");
+
+        // Get the button that opens the modal
+        const privacyBtn = document.querySelector("footer a[href='privacy-policy.html']");
+
+        // Get the <span> element that closes the modal
+        const privacySpan = privacyModal.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        privacyBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            privacyModal.style.display = "block";
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        privacySpan.addEventListener("click", function() {
+            privacyModal.style.display = "none";
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener("click", function(event) {
+            if (event.target == privacyModal) {
+                privacyModal.style.display = "none";
+            }
+        });
+
+        // Get the modal
+        const termsModal = document.getElementById("termsModal");
+
+        // Get the button that opens the modal
+        const termsBtn = document.querySelector("footer a[href='terms-of-service.html']");
+
+        // Get the <span> element that closes the modal
+        const termsSpan = termsModal.getElementsByClassName("close")[0];
+
+        // When the user clicks the button, open the modal
+        termsBtn.addEventListener("click", function(event) {
+            event.preventDefault();
+            termsModal.style.display = "block";
+        });
+
+        // When the user clicks on <span> (x), close the modal
+        termsSpan.addEventListener("click", function() {
+            termsModal.style.display = "none";
+        });
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.addEventListener("click", function(event) {
+            if (event.target == termsModal) {
+                termsModal.style.display = "none";
+            }
+        });
     </script>
 </body>
 </html>
