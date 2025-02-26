@@ -40,7 +40,11 @@
             box-shadow: 0 0 10px #0f0, 0 0 20px #0f0, 0 0 40px #0f0;
             z-index: 9999;
         }
-
+        button[type="submit"] {
+            display: block;
+            margin: 0 auto 20px auto; /* Center the input field and add margin-bottom */
+            width: 50%;
+        }
         /* Change cursor color and glow on hover */
         button:hover ~ .custom-cursor,
         nav a:hover ~ .custom-cursor,
@@ -245,7 +249,6 @@
             color: white;
             padding: 10px;
             width: 100%;
-            max-width: 400px;
             border-radius: 5px;
             box-shadow: 0 0 10px #00ff00;
             text-align: center;
