@@ -42,7 +42,8 @@
         }
         button[type="submit"] {
             display: block;
-            margin: 0 auto 20px auto; /* Center the input field and add margin-bottom */
+            margin: 20px auto 20px auto; /* Center the input field and add margin-bottom */
+            font-size: 1.1rem;
             width: 50%;
         }
         /* Change cursor color and glow on hover */
@@ -94,7 +95,7 @@
         }
         /* Section styling */
         section {
-            padding: 50px 20px;
+            padding: 40px 40px;
             margin: 60px auto;
             max-width: 800px;
             border: 4px solid #00ff00; /* Neon green border */
@@ -107,15 +108,18 @@
         h3 {
             color: white;
             font-family: "Doto", serif;
+            text-transform: uppercase;
+            text-align: center;
             font-size: 2rem;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             text-shadow: 0 0 5px #00ff00, 0 0 10px #ff00ff;
         }
 
 
         p, ul {
-            text-align: left;
+            text-align: justify;
             line-height: 1.6;
+            margin: 20px 10px;
         }
 
         ul {
@@ -130,7 +134,7 @@
         /* Neon Glowing Navbar */
         nav {
             background: rgba(0, 0, 0, 0.85);
-            padding: 5px 10px;
+            padding: 5px 20px;
             position: fixed;
             top: 0;
             width: 100%;
@@ -153,7 +157,7 @@
             text-decoration: none;
             font-size: 1.1rem;
             animation: neon-flicker 1.5s infinite alternate;
-            margin: 0 15px;
+            margin: 0 25px;
         }
 
         nav a:hover {
@@ -174,8 +178,8 @@
         @keyframes neon-flicker {
             0%, 18%, 22%, 25%, 53%, 57%, 100% {
                 text-shadow: 
-                    0 0 4px #00ffff, 
-                    0 0 19px #00ffff, 
+                    0 0 4px #2ac2d6, 
+                    0 0 19px #2ac2d6, 
                     0 0 40px #ff00ff;
             }
             20%, 24%, 55% {
@@ -245,12 +249,12 @@
         /* Center text input */
         input[type="email"] {
             background: rgba(0, 0, 0, 0.7);
-            border: 2px solid #00ff00;
+            border: 2px solid #2ac2d6;
             color: white;
             padding: 10px;
             width: 100%;
             border-radius: 5px;
-            box-shadow: 0 0 10px #00ff00;
+            box-shadow: 0 0 10px #2ac2d6;
             text-align: center;
             font-family: 'Major Mono Display', serif;
             display: block;
@@ -343,21 +347,20 @@
             <span></span>
             <span></span>
         </div>
-        <ul>
+        <ul id="nav-menu">
             <li><a href="#about">About</a></li>
             <li><a href="#features">Features</a></li>
             <li><a href="#leaderboard">Leaderboard</a></li>
             <li><a href="#subscribe">Subscribe</a></li>
         </ul>
         <a href="#subscribe" class="join-now">Join Now</a>
-
     </nav>
 
     <main class="container">
         <div class="centered-gif">
             <img src="assets/logo.gif" alt="gif Logo" style="width: 100%; max-width: 900px; height: auto;">
         </div>
-        <h3>SnakeWifAi Teach AI to Master the Classic Snake Game!</h3>
+        <h3>User-Friendly fun introduction to AI agents and their capabilities</h3>
         <section id="about">
             <h3>About</h3>
             <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!</p>
