@@ -17,7 +17,7 @@
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     <style>
         body {
-            margin: 0;
+            margin: 50px;
             font-family: "Major Mono Display", serif;
             color: white;
             background-color: rgba(0, 0, 0, 0.01); /* 10% transparency */
@@ -115,11 +115,24 @@
             text-shadow: 0 0 5px #00ff00, 0 0 10px #ff00ff;
         }
 
+        h2 {
+            color: white;
+            font-family: "Doto", serif;
+            text-transform: uppercase;
+            text-align: center;
+            font-size: 4rem;
+            width: 100vw; /* Extend width beyond the body */
+            margin-left: -25vw; /* Adjust margin to center the element */
+            margin-bottom: 10px;
+            text-shadow: 0 0 5px #00ff00, 0 0 10px #ff00ff;
+            animation: lights 5s 750ms linear infinite;
+            position: relative;
+        }
 
         p, ul {
             text-align: justify;
             line-height: 1.6;
-            margin: 20px 10px;
+            margin: 20px 50px;
         }
 
         ul {
@@ -186,6 +199,55 @@
                 text-shadow: none;
             }
         }
+
+        @keyframes lights {
+            0% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                0 0 1em hsla(320, 100%, 50%, 0.2),
+                0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                -1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+            
+            30% { 
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                0 0 1em hsla(320, 100%, 50%, 0.5),
+                0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                -0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            
+            40% { 
+                color: hsl(230, 100%, 95%);
+                text-shadow:
+                0 0 1em hsla(320, 100%, 50%, 0.5),
+                0 0 0.125em hsla(320, 100%, 90%, 0.5),
+                -0.25em -0.125em 0.125em hsla(40, 100%, 60%, 0.2),
+                0.25em 0.125em 0.125em hsla(200, 100%, 60%, 0.4);
+            }
+            
+            70% {
+                color: hsl(230, 80%, 90%);
+                text-shadow:
+                0 0 1em hsla(320, 100%, 50%, 0.5),
+                0 0 0.125em hsla(320, 100%, 60%, 0.5),
+                0.5em -0.125em 0.25em hsla(40, 100%, 60%, 0.2),
+                -0.5em 0.125em 0.25em hsla(200, 100%, 60%, 0.4);
+            }
+            
+            100% {
+                color: hsl(230, 40%, 80%);
+                text-shadow:
+                0 0 1em hsla(320, 100%, 50%, 0.2),
+                0 0 0.125em hsla(320, 100%, 60%, 0.3),
+                1em -0.125em 0.5em hsla(40, 100%, 60%, 0),
+                -1em 0.125em 0.5em hsla(200, 100%, 60%, 0);
+            }
+            
+            }
+
         button, .join-now {
             background: rgba(0, 255, 0, 0.1);
             border: 2px solid #00ff00;
@@ -224,6 +286,26 @@
             height: 100vh;
             background: rgba(0, 0, 0, 0.3); /* Adjusted for better visibility */
             z-index: -1;
+        }
+
+        .header-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgb(7, 13, 34);
+            margin: 80px 0;
+        }
+
+        .header-container h2 {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .header-container .centered-gif {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         /* Notification styles */
@@ -285,7 +367,7 @@
             padding: 20px;
             border: 2px solid #00ff00;
             width: 80%;
-            max-width: 600px;
+            max-width: 700px;
             border-radius: 10px;
             box-shadow: 0 0 15px #00ff00, 0 0 30px #ff00ff;
             color: white;
@@ -339,9 +421,6 @@
     <div class="overlay"></div>
 
     <nav>
-        <div class="logo">
-            <img src="assets/newestLogo.png" alt="SnakeWifAi Logo">
-        </div>
         <div class="menu-toggle" id="menu-toggle">
             <span></span>
             <span></span>
@@ -356,11 +435,12 @@
         <a href="#subscribe" class="join-now">Join Now</a>
     </nav>
 
-    <main class="container">
+    <div class="header-container">
+        <h2>User-Friendly fun introduction to AI agents and their capabilities</h2>
         <div class="centered-gif">
             <img src="assets/logo.gif" alt="gif Logo" style="width: 100%; max-width: 900px; height: auto;">
         </div>
-        <h3>User-Friendly fun introduction to AI agents and their capabilities</h3>
+    </div>
         <section id="about">
             <h3>About</h3>
             <p>SnakeWifAi is a Play2Earn crypto game on the TON Blockchain. Dive into the neon retro world of SnakeWifAi and earn crypto rewards!</p>
@@ -396,27 +476,27 @@
             <span class="close">&times;</span>
             <h3>Privacy Policy</h3>
             <p>Last Updated: 26/02/2025</p>
-            <h4>1. Introduction</h4>
+            <h3>1. Introduction</h3>
             <p>Welcome to Snake WiFai ("we," "our," "us"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website https://www.snakewifai.xyz/ ("Site").</p>
-            <h4>2. Information We Collect</h4>
+            <h3>2. Information We Collect</h3>
             <p><strong>Personal Information:</strong> When you visit our site, you may voluntarily provide us with personal information, such as your name, email address, and any other information you choose to share.</p>
             <p><strong>Usage Data:</strong> We may collect information automatically, such as your IP address, browser type, operating system, and browsing behavior on our site.</p>
-            <h4>3. How We Use Your Information</h4>
+            <h3>3. How We Use Your Information</h3>
             <p>We may use the information we collect to:</p>
             <ul>
                 <li>Improve and personalize your experience on our site</li>
                 <li>Respond to your inquiries and provide customer support</li>
                 <li>Monitor and analyze site usage and trends</li>
             </ul>
-            <h4>4. Sharing Your Information</h4>
+            <h3>4. Sharing Your Information</h3>
             <p>We do not sell, trade, or otherwise transfer your personal information to outside parties unless required by law.</p>
-            <h4>5. Cookies and Tracking Technologies</h4>
+            <h3>5. Cookies and Tracking Technologies</h3>
             <p>We may use cookies and similar tracking technologies to enhance your experience on our site.</p>
-            <h4>6. Your Rights</h4>
+            <h3>6. Your Rights</h3>
             <p>You may opt-out of certain data collection practices or request access to or deletion of your personal information by contacting us at [Your Contact Email].</p>
-            <h4>7. Changes to This Policy</h4>
+            <h3>7. Changes to This Policy</h3>
             <p>We may update this Privacy Policy from time to time. We encourage you to review this page periodically for any changes.</p>
-            <h4>8. Contact Us</h4>
+            <h3>8. Contact Us</h3>
             <p>If you have any questions about this Privacy Policy, please contact us at snakewifai@proton.me</p>
         </div>
     </div>
@@ -427,21 +507,21 @@
             <span class="close">&times;</span>
             <h3>Terms of Service</h3>
             <p>Last Updated: 27/02/2025</p>
-            <h4>1. Acceptance of Terms</h4>
+            <h3>1. Acceptance of Terms</h3>
             <p>By accessing and using https://www.snakewifai.xyz/ ("Site"), you agree to comply with these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our site.</p>
-            <h4>2. Use of Our Site</h4>
+            <h3>2. Use of Our Site</h3>
             <p>You may use our site for lawful purposes only. You agree not to use the site in a way that could harm, disrupt, or impair the site or our services.</p>
-            <h4>3. Intellectual Property</h4>
+            <h3>3. Intellectual Property</h3>
             <p>All content on our site, including text, graphics, logos, and images, is the property of Snake WiFai or its licensors and is protected by intellectual property laws.</p>
-            <h4>4. User Content</h4>
+            <h3>4. User Content</h3>
             <p>If you submit content to our site, you grant us a non-exclusive, royalty-free, worldwide license to use, reproduce, and display that content.</p>
-            <h4>5. Disclaimer of Warranties</h4>
+            <h3>5. Disclaimer of Warranties</h3>
             <p>Our site is provided "as is" without warranties of any kind, either express or implied. We do not guarantee that the site will be error-free or uninterrupted.</p>
-            <h4>6. Limitation of Liability</h4>
+            <h3>6. Limitation of Liability</h3>
             <p>To the fullest extent permitted by law, Snake WiFai shall not be liable for any damages arising from your use of our site.</p>
-            <h4>7. Changes to These Terms</h4>
+            <h3>7. Changes to These Terms</h3>
             <p>We may update these Terms from time to time. Continued use of the site constitutes acceptance of the updated Terms.</p>
-            <h4>8. Contact Us</h4>
+            <h3>8. Contact Us</h3>
             <p>If you have questions about these Terms, please contact us at snakewifai@proton.me</p>
         </div>
     </div>
